@@ -1,14 +1,52 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import React from 'react';
+import CardSection from '../components/Dashboard/CardSection';
+import LeadsTrackingGraph from '../components/Dashboard/LeadsTrackingGraph';
+import ReasonStatCards from '../components/Dashboard/ReasonStatCards';
+import MainAppLayout from '../components/layout/MainAppLayout';
 
-const Index = () => {
+/**
+ * A simple tab component for navigating between Sales and Leads views.
+ * This is a local component as it is specific to this page's layout.
+ */
+const DashboardTabs: React.FC = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="border-b border-border">
+      <nav className="-mb-px flex space-x-6" aria-label="Tabs">
+        <a
+          href="#"
+          className="whitespace-nowrap py-3 px-1 border-b-2 border-transparent font-medium text-sm text-muted-foreground hover:text-foreground hover:border-gray-300 transition-colors"
+          onClick={(e) => e.preventDefault()}
+        >
+          Sales
+        </a>
+        <a
+          href="#"
+          className="whitespace-nowrap py-3 px-1 border-b-2 border-primary font-semibold text-sm text-primary"
+          aria-current="page"
+          onClick={(e) => e.preventDefault()}
+        >
+          Leads
+        </a>
+      </nav>
     </div>
   );
 };
 
-export default Index;
+/**
+ * The main dashboard page for the Sales Dashboard application.
+ * It assembles various data visualization components within a standard application layout.
+ */
+const IndexPage: React.FC = () => {
+  return (
+    <MainAppLayout>
+      <div className="flex flex-col gap-6">
+        <DashboardTabs />
+        <CardSection />
+        <LeadsTrackingGraph />
+        <ReasonStatCards />
+      </div>
+    </MainAppLayout>
+  );
+};
+
+export default IndexPage;
